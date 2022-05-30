@@ -1,11 +1,17 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia'
 import user from '@/data/user.json'
+import type Book from '../types/Book';
 import type User from '../types/User';
 import router from '@/router';
 
 export const useUserStore = defineStore('UserStore', {
     state: () => {
+        let persistedBooks = localStorage.getItem('likedBooks');
+
+        const likedBooks = (persistedBooks === null) ? [] : JSON.parse(persistedBooks);
+        user.likedBooks = likedBooks;
+
         const userData = ref<User>(user);
         const title = 'Profile';
         const userProfile = {
@@ -16,7 +22,7 @@ export const useUserStore = defineStore('UserStore', {
         };
         const passwordFieldType = "password";
 
-        return { userData, title, userProfile, passwordFieldType };
+        return { userData, likedBooks, title, userProfile, passwordFieldType };
     },
 
     getters: {
@@ -47,6 +53,14 @@ export const useUserStore = defineStore('UserStore', {
         },
         switchVisibility() {
           this.passwordFieldType = this.passwordFieldType === "password" ? "text" : "password";
+        },
+        addBook(book: Book) {
+            this.likedBooks.push(book);
+            this.userData.likedBooks = this.likedBooks;
+        },
+        removeBookmark(id: number) {
+            this.likedBooks.splice(this.likedBooks.findIndex((element: { id: number; }) => element.id === id), 1);
+            this.userData.likedBooks = this.likedBooks;
         },
         updateProfile() {
             this.userData.firstName = this.userProfile.firstName;
