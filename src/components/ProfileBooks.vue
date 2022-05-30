@@ -19,7 +19,7 @@ export default {
         <div class="col-8 flex-column">
           <div><strong> {{ book.name }} </strong></div>
           <div class="text-capitalize"> {{ book.type }} </div>
-          <div> {{ book.available }} </div>
+          <div> Available: {{ book.available ? "Yes" : "No" }} </div>
         </div>
         <div class="col-4 text-center">
           <i class="bi bi-bookmark" /><br />

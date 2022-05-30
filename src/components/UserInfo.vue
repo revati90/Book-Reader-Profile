@@ -1,17 +1,10 @@
 <script lang="ts">
+import user from '@/data/user.json'
 
 export default {
   data() {
     return {
-      user: [
-        {
-          "name":"John",
-          "lastName":"Doe",
-          "email":"johnfdoe",
-          "born":"1-1-2000",
-          "likedBooks":[]
-        }
-      ]
+      user
     };
   },
 };
@@ -29,8 +22,8 @@ export default {
           alt="Profile avatar"
         />
       </div>
-      <div class="mt-3 d-flex flex-column" v-for="user in user" :key="user.id">
-        <h4> {{ user.name + ' ' + user.lastName}} </h4>
+      <div class="mt-3 d-flex flex-column">
+        <h4> {{ user.firstName + ' ' + user.lastName}} </h4>
         <span> {{ user.email }} </span>
         <span> Age: {{ user.born }} </span>
       </div>
