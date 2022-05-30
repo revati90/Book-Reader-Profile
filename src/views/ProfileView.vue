@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import Header from '@/components/Header.vue'
-import UserInfo from '@/components/UserInfo.vue'
-import FooterStick from '@/components/FooterStick.vue'
-import 'bootstrap/dist/js/bootstrap.min.js'
-import { useUserStore } from '@/store/user';
-import { useBookStore } from '@/store/book';
-import { storeToRefs } from 'pinia';
+import Header from "@/components/Header.vue";
+import UserInfo from "@/components/UserInfo.vue";
+import FooterStick from "@/components/FooterStick.vue";
+import "bootstrap/dist/js/bootstrap.min.js";
+import { useUserStore } from "@/store/user";
+import { useBookStore } from "@/store/book";
+import { storeToRefs } from "pinia";
 
-const { getUserData, getAge, getTitle } = storeToRefs(useUserStore())
+const { getUserData, getAge, getTitle } = storeToRefs(useUserStore());
 const { setTitle } = useUserStore();
-const { getBooks } = storeToRefs(useBookStore())
+const { getBooks } = storeToRefs(useBookStore());
 const { addBookmark, isBookmarked } = useBookStore();
-
 </script>
 
 <template>
@@ -23,22 +22,40 @@ const { addBookmark, isBookmarked } = useBookStore();
       <div class="p-4">
         <ul class="nav nav-tabs" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active border-0 border-bottom" data-bs-toggle="tab" href="#profile-books" @click="setTitle('Profile')">Profile</a>
+            <a
+              class="nav-link active border-0 border-bottom"
+              data-bs-toggle="tab"
+              href="#profile-books"
+              @click="setTitle('Profile')"
+              >Profile</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link border-0 border-bottom" data-bs-toggle="tab" href="#browse-books" @click="setTitle('Browse Books')">Browse Books</a>
+            <a
+              class="nav-link border-0 border-bottom"
+              data-bs-toggle="tab"
+              href="#browse-books"
+              @click="setTitle('Browse Books')"
+              >Browse Books</a
+            >
           </li>
         </ul>
 
         <div class="tab-content">
-
-          <div id="profile-books" class="container tab-pane active"><br>
-            <div class="card mt-3" v-for="book in getUserData.likedBooks">
+          <div id="profile-books" class="container tab-pane active">
+            <br />
+            <div
+              class="card mt-3"
+              v-for="book in getUserData.likedBooks"
+              :key="book.id"
+            >
               <div class="row p-2">
                 <div class="col-8 flex-column">
-                  <div><strong> {{ book.name }} </strong></div>
-                  <div class="text-capitalize"> {{ book.type }} </div>
-                  <div> Available: {{ book.available ? "Yes" : "No" }} </div>
+                  <div>
+                    <strong> {{ book.name }} </strong>
+                  </div>
+                  <div class="text-capitalize">{{ book.type }}</div>
+                  <div>Available: {{ book.available ? "Yes" : "No" }}</div>
                 </div>
                 <div class="col-4 text-center">
                   <i class="bi bi-bookmark" /><br />
@@ -48,13 +65,16 @@ const { addBookmark, isBookmarked } = useBookStore();
             </div>
           </div>
 
-          <div id="browse-books" class="container tab-pane fade"><br>
-            <div class="card mt-3" v-for="book in getBooks" >
+          <div id="browse-books" class="container tab-pane fade">
+            <br />
+            <div class="card mt-3" v-for="book in getBooks" :key="book.id">
               <div class="row p-2">
                 <div class="col-8 flex-column">
-                  <div><strong> {{ book.name }} </strong></div>
-                  <div class="text-capitalize"> {{ book.type }} </div>
-                  <div> Available: {{ book.available ? "Yes" : "No" }} </div>
+                  <div>
+                    <strong> {{ book.name }} </strong>
+                  </div>
+                  <div class="text-capitalize">{{ book.type }}</div>
+                  <div>Available: {{ book.available ? "Yes" : "No" }}</div>
                 </div>
                 <div class="col-4 text-center">
                   <i class="bi bi-bookmark" /><br />
@@ -65,7 +85,6 @@ const { addBookmark, isBookmarked } = useBookStore();
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>

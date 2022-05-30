@@ -1,7 +1,5 @@
-<script setup lang='ts'>
-
-defineProps(['userData', 'age'])
-
+<script setup lang="ts">
+defineProps(["userData", "age"]);
 </script>
 
 <template>
@@ -17,7 +15,7 @@ defineProps(['userData', 'age'])
         />
       </div>
       <div class="mt-2 px-3 d-flex flex-column">
-        <h4> {{ userData.firstName + " " + userData.lastName }} </h4>
+        <h4>{{ userData.firstName + " " + userData.lastName }}</h4>
         <span> {{ userData.email }} </span>
         <span> Age: {{ age }} </span>
       </div>

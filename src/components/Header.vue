@@ -1,19 +1,18 @@
 <script setup lang="ts">
-
-defineProps(['title']);
-
+defineProps(["title"]);
 </script>
 
 <template>
-  <header class="navbar-dark bg-success text-center text-white p-3">
-    <div class="row px-2 py-4">
-      <div v-if="title !== 'Edit Profile'"></div>
-      <div class="col-md-2" v-else><router-link to="/" class="text-white text-decoration-none"><span> &lt; Profile </span></router-link></div>
-      <div class="col-md-10 text-center">{{ title }}</div>
+  <header class="navbar-dark bg-success text-white py-3">
+    <div class="container text-center p-0">
+      <div class="d-inline float-start" v-if="title === 'Edit Profile'">
+        <router-link to="/" class="text-white text-decoration-none">
+          <i class="bi bi-chevron-left" />Profile
+        </router-link>
+      </div>
+      <div class="d-inline">{{ title }}</div>
     </div>
   </header>
 </template>
 
-<style>
-
-</style>
+<style></style>
