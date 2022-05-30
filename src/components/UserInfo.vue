@@ -1,13 +1,7 @@
-<script lang="ts">
-import user from '@/data/user.json'
+<script setup lang='ts'>
 
-export default {
-  data() {
-    return {
-      user
-    };
-  },
-};
+defineProps(['userData', 'age'])
+
 </script>
 
 <template>
@@ -23,9 +17,9 @@ export default {
         />
       </div>
       <div class="mt-3 d-flex flex-column">
-        <h4> {{ user.firstName + ' ' + user.lastName}} </h4>
-        <span> {{ user.email }} </span>
-        <span> Age: {{ user.born }} </span>
+        <h4> {{ userData.firstName + " " + userData.lastName }} </h4>
+        <span> {{ userData.email }} </span>
+        <span> Age: {{ age }} </span>
       </div>
     </div>
   </div>

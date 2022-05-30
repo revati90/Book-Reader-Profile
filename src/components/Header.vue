@@ -1,19 +1,16 @@
-<script lang="ts">
+<script setup lang="ts">
 
-export default {
-  methods: {
-    goBack() {
-      return this.$router.push('/');
-    }
-  },
-};
+defineProps(['title']);
+
 </script>
 
 <template>
   <header class="navbar-dark bg-success text-center text-white p-3">
     <div class="row p-4">
-      <div @click="goBack" class="col-1">Back</div>
-      <div class="col-10 text-center">Profile</div>
+      <router-link to="/" class="col-2 text-white text-decoration-none">
+        <span> &lt; Profile </span>
+      </router-link>
+      <div class="col-10 text-center">{{ title }}</div>
       </div>
   </header>
 </template>

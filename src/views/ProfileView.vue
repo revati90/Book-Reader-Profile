@@ -5,12 +5,19 @@ import ProfileBooks from '@/components/ProfileBooks.vue'
 import BrowseBooks from '@/components/BrowseBooks.vue'
 import FooterStick from '@/components/FooterStick.vue'
 import 'bootstrap/dist/js/bootstrap.min.js'
+
+import { useUserStore } from '@/store/user';
+import { storeToRefs } from 'pinia';
+
+const { getUserData, getAge, getTitle } = storeToRefs(useUserStore())
+const { setTitle } = useUserStore();
+
 </script>
 
 <template>
   <main>
     <Header />
-    <UserInfo />
+    <UserInfo :userData="getUserData" :age="getAge"></UserInfo>
 
     <div class="container mt-0">
       <div class="p-4">
@@ -33,7 +40,7 @@ import 'bootstrap/dist/js/bootstrap.min.js'
         </div>
       </div>
     </div>
-    
+
     <FooterStick />
   </main>
 </template>
