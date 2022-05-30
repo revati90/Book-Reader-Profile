@@ -23,10 +23,10 @@ const { addBookmark, isBookmarked } = useBookStore();
       <div class="p-4">
         <ul class="nav nav-tabs" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active text-success" data-bs-toggle="tab" href="#profile-books" @click="setTitle('Profile')">Profile</a>
+            <a class="nav-link active border-0 border-bottom" data-bs-toggle="tab" href="#profile-books" @click="setTitle('Profile')">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" href="#browse-books" @click="setTitle('Browse Books')">Browse Books</a>
+            <a class="nav-link border-0 border-bottom" data-bs-toggle="tab" href="#browse-books" @click="setTitle('Browse Books')">Browse Books</a>
           </li>
         </ul>
 
@@ -77,5 +77,9 @@ const { addBookmark, isBookmarked } = useBookStore();
 <style scoped>
 .brp-tabs {
   padding-bottom: 84px;
+}
+
+a.nav-link.active {
+  color: #198754;
 }
 </style>

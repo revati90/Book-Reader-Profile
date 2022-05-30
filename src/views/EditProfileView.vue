@@ -19,7 +19,7 @@ const title = 'Edit Profile'
       <div class="text-center py-4">
         <div>
           <img
-            class="border-success rounded-circle"
+            class="border border-2 border-success rounded-circle"
             src="@/assets/avatar.png"
             width="100"
             height="100"
@@ -36,7 +36,7 @@ const title = 'Edit Profile'
             <div class="mb-3"><input type="text" name="lastName" class="form-control" placeholder="Enter last name" v-model="getUserProfile.lastName"></div>
             <div class="mb-3"><input type="text" name="born" class="form-control" placeholder="Date of birth" v-model="getUserProfile.born"></div>
             <div class="input-group mb-3">
-              <input :type="getPasswordFieldType" class="form-control" placeholder="**********" v-model="password">
+              <input :type="getPasswordFieldType" class="form-control" placeholder="**********">
               <span class="input-group-text" @click="switchVisibility">SHOW</span>
             </div>
           </div>
